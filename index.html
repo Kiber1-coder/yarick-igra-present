@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Рыбалка - Аркадная игра</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <canvas id="gameCanvas"></canvas>
+
+      <!-- Стартовый экран -->
+      <div id="startScreen" class="screen active">
+        <div class="title-container">
+          <h1>🎣 Рыбалка</h1>
+          <p class="subtitle">Аркадная игра</p>
+        </div>
+        <div class="instructions">
+          <p>
+            ⬇️ Нажми <strong>Пробел</strong> или <strong>Кликни</strong> чтобы
+            опустить крючок
+          </p>
+          <p>⬆️ Нажми ещё раз чтобы поднять его</p>
+          <p>🐟 Лови рыбу и набирай очки!</p>
+        </div>
+        <div class="start-buttons">
+          <button id="startBtn" class="btn primary">Начать игру</button>
+          <button id="openShopBtn" class="btn secondary">Магазин удачек</button>
+        </div>
+        <div class="start-balance">
+          🪙 Монет: <span id="startCoins">0</span>
+        </div>
+      </div>
+
+      <!-- Экран игры (HUD) -->
+      <div id="gameUI" class="screen">
+        <div class="hud">
+          <div class="hud-item">
+            <span class="hud-label">⏱️ Время</span>
+            <span id="timer" class="hud-value">60</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">💰 Счёт</span>
+            <span id="score" class="hud-value">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">🪙 Монеты</span>
+            <span id="coins" class="hud-value">0</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">🏆 Рекорд</span>
+            <span id="highScore" class="hud-value">0</span>
+          </div>
+          <div class="hud-item">
+            <button id="pauseBtn" class="hud-btn">⏸️</button>
+          </div>
+        </div>
+        <div class="improvements-indicator" id="improvementsIndicator">
+          <!-- Активные улучшения будут показаны здесь -->
+        </div>
+      </div>
+
+      <!-- Экран Game Over -->
+      <div id="gameOverScreen" class="screen">
+        <div class="game-over-content">
+          <h2>⏰ Время вышло!</h2>
+          <div class="final-score">
+            <span class="score-label">Ваш счёт</span>
+            <span id="finalScore" class="score-value">0</span>
+          </div>
+          <div class="final-coins">
+            <span class="coins-label">🪙 Монеты</span>
+            <span id="finalCoins" class="coins-value">0</span>
+          </div>
+          <div class="new-record" id="newRecord" style="display: none">
+            🎉 Новый рекорд!
+          </div>
+          <div class="game-over-buttons">
+            <button id="restartBtn" class="btn">Играть снова</button>
+            <button id="openShopBtn2" class="btn secondary">
+              Магазин удачек
+            </button>
+            <button id="backToMenuBtn" class="btn">В меню</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Магазин удачек -->
+      <div id="shopScreen" class="screen">
+        <div class="shop-container">
+          <div class="shop-header">
+            <h2>🛒 Магазин удачек</h2>
+            <div class="shop-balance">
+              <span class="coins-icon">🪙</span>
+              <span id="shopCoins">0</span> монет
+            </div>
+          </div>
+
+          <div
+            class="shop-message"
+            id="shopMessage"
+            style="display: none"
+          ></div>
+
+          <div class="shop-improvements" id="improvementsList">
+            <!-- Список улучшений будет сгенерирован JavaScript -->
+          </div>
+
+          <div class="shop-controls">
+            <button id="closeShopBtn" class="btn">Закрыть магазин</button>
+            <button id="startFromShopBtn" class="btn primary">
+              Начать игру
+            </button>
+          </div>
+
+          <div class="shop-tip">
+            💡 Совет: Монеты можно заработать, ловя рыбу. Чем больше очков за
+            рыбу, тем больше монет!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
